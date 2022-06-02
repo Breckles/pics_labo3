@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créateur d'art Pixelisé</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h2>Art pixelisé'</h2>
+    <label for="size">Taille de la grille</label>
+    <input type="range" min=16 max=16 id="gridSizeInput" name="size"/>
+    <p id="sizeDisplay">16x16</p>
+    <label for="color">Choisissez vos couleurs</label>
+    <input type="color" id="colorInput" name="color"/>
+    <div id="colorInputDisplay"></div>
+    <button id="erase">Effacer la palette</button>
+    <div id="grid"></div>
+</body>
+<script src="index.js"></script>
+</html>

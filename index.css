@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  flex-direction: column;
+  /* Complétez ci-dessous */
+}
+#grid {
+  /* Complétez ci-dessous */
+}
+
+.gridSquare {
+  background-color: white;
+  border: 1px black solid;
+  box-sizing: border-box;
+}
+
+#colorInputDisplay {
+    /* Complétez ci-dessous */
+
+}
+#erase {
+    /* Complétez ci-dessous */
+
+}

@@ -8,14 +8,85 @@
 
 html {
   width: 100%;
+  height: fit-content;
   min-width: 100vw;
-  height: 100%;
   min-height: 100vh;
   font-size: 10px;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 20px;
   font-size: 16px;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px;
+}
+
+#colorPaletteContainer {
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  font-style: italic;
+}
+#colorPaletteContainer .swatches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+#colorPaletteContainer .swatches__swatch {
+  flex: 0 0 20px;
+  aspect-ratio: 1/1;
+}
+
+#resetPaletteButton {
+  visibility: hidden;
+}
+
+#gridContainer {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 1/1;
+}
+#gridContainer .grid {
+  display: grid;
+  gap: 1px;
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+#gridContainer .grid__cell {
+  background-color: white;
 }
 
 /*# sourceMappingURL=index.css.map */

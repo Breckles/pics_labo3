@@ -21,29 +21,31 @@
     <div class="formInput">
       <label for="size">Taille de la grille</label>
       <input type="range"
-             min=16
-             max=16
-             id="gridSizeInput"
-             name="size" />
+             min=2
+             max=50
+             value="16"
+             id="gridSizeInput" />
     </div>
 
-    <p id="gridSizeDisplay">16x16</p>
+    <p id="gridSizeDisplay">16 x 16</p>
 
     <div class="formInput">
       <label for="color"
              class="formInput__label">Choisissez vos couleurs</label>
       <input type="color"
              id="colorInput"
-             class="formInput__input"
-             name="color" />
+             value="#000000" />
     </div>
 
-    <div id="colorPalette"></div>
+    <div id="colorPaletteContainer">
+      Aucune couleurs choisi. Elles seront aléatoires.
+    </div>
 
-    <button id=""
+    <button id="resetPaletteButton"
             type="button">Effacer la palette</button>
 
-    <div id="grid"></div>
+
+    <div id="gridContainer"></div>
   </main>
 </body>
 

@@ -11,6 +11,8 @@ const resetPaletteButton = document.getElementById('resetPaletteButton');
 let gridSize = 16;
 let colorPalette = []; // strings representing hexadecimal color values (eg. '#ffffff')
 
+///////////////// Updaters
+
 const updateGrid = () => {
   // prepare new grid
   const grid = document.createElement('div');
@@ -32,22 +34,11 @@ const updateGrid = () => {
   gridContainer.replaceChildren(grid);
 };
 
-const onMoveSliderHandler = (event) => {
-  const displayedGridSize = event.target.value;
-  gridSizeDisplay.innerHTML = `${displayedGridSize} x ${displayedGridSize}`;
-};
-
-const onChangeGridSizeHandler = (event) => {
-  const newGridSize = +event.target.value;
-
-  gridSize = newGridSize;
-  updateGrid();
-};
-
 const updateColorPaletteSwatches = () => {
   if (colorPalette.length === 0) {
     colorPaletteContainer.innerHTML =
       'Aucune couleurs choisi. Elles seront aléatoires.';
+    resetPaletteButton.style.visibility = 'hidden';
     return;
   }
 
@@ -62,14 +53,49 @@ const updateColorPaletteSwatches = () => {
   }
 
   colorPaletteContainer.replaceChildren(swatches);
+
+  resetPaletteButton.style.visibility = 'visible';
+};
+
+//////////////// Handlers
+
+// Update grid size display as the user interacts with the slider
+const onMoveSliderHandler = (event) => {
+  const displayedGridSize = event.target.value;
+  gridSizeDisplay.innerHTML = `${displayedGridSize} x ${displayedGridSize}`;
+};
+
+// Update grid when the user has entered a new value using the slider
+const onChangeGridSizeHandler = (event) => {
+  const newGridSize = +event.target.value;
+  gridSize = newGridSize;
+  updateGrid();
 };
 
 const onPickColorHandler = (event) => {
   const color = event.target.value;
   colorPalette.push(color);
   updateColorPaletteSwatches();
-  resetPaletteButton.style.visibility = 'visible';
 };
+
+const onResetPaletteHandler = (event) => {
+  colorPalette = [];
+  updateColorPaletteSwatches();
+};
+
+// Attached to individual grid__cells in updateGrid()
+const onCellHoverHandler = (event) => {
+  const color = getColor();
+  event.target.style.backgroundColor = color;
+};
+
+// Attach event handlers
+gridSizeInputSlider.addEventListener('input', onMoveSliderHandler);
+gridSizeInputSlider.addEventListener('change', onChangeGridSizeHandler);
+colorInputPicker.addEventListener('change', onPickColorHandler);
+resetPaletteButton.addEventListener('click', onResetPaletteHandler);
+
+////////////////// Utils
 
 const generateRandomHexColor = () => {
   const randomHexValue = Math.floor(Math.random() * 16777215).toString(16);
@@ -90,21 +116,7 @@ const getColor = () => {
   return generateRandomHexColor();
 };
 
-const onCellHoverHandler = (event) => {
-  const color = getColor();
-  event.target.style.backgroundColor = color;
-};
+///////////////// Main
 
-const onResetPaletteHandler = (event) => {
-  colorPalette = [];
-  updateColorPaletteSwatches();
-  resetPaletteButton.style.visibility = 'hidden';
-};
-
-// Attach event handlers
-gridSizeInputSlider.addEventListener('input', onMoveSliderHandler);
-gridSizeInputSlider.addEventListener('change', onChangeGridSizeHandler);
-colorInputPicker.addEventListener('change', onPickColorHandler);
-resetPaletteButton.addEventListener('click', onResetPaletteHandler);
-
+// Initialize grid
 updateGrid();

@@ -112,7 +112,6 @@ const pickRandomPaletteColor = () => {
 };
 
 const getColor = () => {
-  // return colorPalette ? pickRandomPaletteColor() : generateRandomHexColor();
   if (colorPalette.length > 0) {
     return pickRandomPaletteColor();
   }
@@ -150,7 +149,6 @@ const marioModeCellHoverHandler = (event) => {
 
 const toggleMarioMode = () => {
   if (mode === 'normal') {
-    console.log('in toggleMarioMode');
     mode = 'mario';
     colorPalette = images;
     onCellHoverHandler = marioModeCellHoverHandler;

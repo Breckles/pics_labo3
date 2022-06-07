@@ -15,37 +15,41 @@
 </head>
 
 <body>
-  <h1>Art pixelisé</h1>
+  <h1 id="titleHeader">Art pixelisé</h1>
 
   <main>
-    <div class="formInput">
-      <label for="size">Taille de la grille</label>
-      <input type="range"
-             min=2
-             max=50
-             value="16"
-             id="gridSizeInput" />
-    </div>
+    <section id="controls">
+      <div id="gridSizeContainer">
+        <div class="formInput">
+          <label for="size">Taille de la grille</label>
+          <input type="range"
+                 min=2
+                 max=50
+                 value="16"
+                 id="gridSizeInput" />
+        </div>
 
-    <p id="gridSizeDisplay">16 x 16</p>
+        <p id="gridSizeDisplay">16 x 16</p>
+      </div>
 
-    <div class="formInput">
-      <label for="color"
-             class="formInput__label">Choisissez vos couleurs</label>
-      <input type="color"
-             id="colorInput"
-             value="#000000" />
-    </div>
+      <div class="formInput">
+        <label for="color"
+               class="formInput__label">Choisissez vos couleurs</label>
+        <input type="color"
+               id="colorInput"
+               value="#000000" />
+      </div>
 
-    <div id="colorPaletteContainer">
-      Aucune couleurs choisi. Elles seront aléatoires.
-    </div>
+      <div id="colorPaletteContainer">
+        <div id="colorPaletteSwatches">Aucune couleurs choisi.<br>Elles seront aléatoires.</div>
+        <button id="resetPaletteButton"
+                class="hidden"
+                type="button">Effacer la palette</button>
+      </div>
+    </section>
 
-    <button id="resetPaletteButton"
-            type="button">Effacer la palette</button>
-
-
-    <div id="gridContainer"></div>
+    <section id="gridContainer"
+             aria-labelledby="titleHeader"></section>
   </main>
 </body>
 

@@ -5,7 +5,7 @@ const gridContainer = document.getElementById('gridContainer');
 const gridSizeInputSlider = document.getElementById('gridSizeInput');
 const gridSizeDisplay = document.getElementById('gridSizeDisplay');
 const colorInputPicker = document.getElementById('colorInput');
-const colorPaletteContainer = document.getElementById('colorPaletteContainer');
+const colorPaletteSwatches = document.getElementById('colorPaletteSwatches');
 const resetPaletteButton = document.getElementById('resetPaletteButton');
 
 let gridSize = 16;
@@ -36,25 +36,24 @@ const updateGrid = () => {
 
 const updateColorPaletteSwatches = () => {
   if (colorPalette.length === 0) {
-    colorPaletteContainer.innerHTML =
-      'Aucune couleurs choisi. Elles seront aléatoires.';
-    resetPaletteButton.style.visibility = 'hidden';
+    colorPaletteSwatches.innerHTML =
+      'Aucune couleurs choisi.<br>Elles seront aléatoires.';
+    resetPaletteButton.classList.remove('visible');
     return;
   }
 
-  const swatches = document.createElement('div');
-  swatches.classList.add('swatches');
+  const swatchesTemplate = document.createElement('template');
 
   for (const color of colorPalette) {
     const swatch = document.createElement('div');
-    swatch.classList.add('swatches__swatch');
+    swatch.classList.add('swatch');
     swatch.style.backgroundColor = color;
-    swatches.appendChild(swatch);
+    swatchesTemplate.content.appendChild(swatch);
   }
 
-  colorPaletteContainer.replaceChildren(swatches);
+  colorPaletteSwatches.replaceChildren(swatchesTemplate.content);
 
-  resetPaletteButton.style.visibility = 'visible';
+  resetPaletteButton.classList.add('visible');
 };
 
 //////////////// Handlers

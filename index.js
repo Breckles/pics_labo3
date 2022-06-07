@@ -4,10 +4,14 @@
 const gridContainer = document.getElementById('gridContainer');
 const gridSizeInputSlider = document.getElementById('gridSizeInput');
 const gridSizeDisplay = document.getElementById('gridSizeDisplay');
+const colorInputContainer = document.getElementById('colorInputContainer');
 const colorInputPicker = document.getElementById('colorInput');
+const colorPaletteContainer = document.getElementById('colorPaletteContainer');
 const colorPaletteSwatches = document.getElementById('colorPaletteSwatches');
 const resetPaletteButton = document.getElementById('resetPaletteButton');
+const marioModeToggleButton = document.getElementById('marioModeButton');
 
+let mode = 'normal';
 let gridSize = 16;
 let colorPalette = []; // strings representing hexadecimal color values (eg. '#ffffff')
 
@@ -82,11 +86,12 @@ const onResetPaletteHandler = (event) => {
   updateColorPaletteSwatches();
 };
 
-// Attached to individual grid__cells in updateGrid()
-const onCellHoverHandler = (event) => {
+const normalModeCellHoverHandler = (event) => {
   const color = getColor();
   event.target.style.backgroundColor = color;
 };
+// Attached to individual grid__cells in updateGrid()
+let onCellHoverHandler = normalModeCellHoverHandler;
 
 // Attach event handlers
 gridSizeInputSlider.addEventListener('input', onMoveSliderHandler);
@@ -119,3 +124,49 @@ const getColor = () => {
 
 // Initialize grid
 updateGrid();
+
+/////////////////////// Mario Mode /////////////////////////
+const images = [
+  'block_brick_lava.png',
+  'block_brick.png',
+  'block_bridge_donut.png',
+  'block_bridge_lava.png',
+  'block_cloud.png',
+  'block_eyes_angry.png',
+  'block_eyes.png',
+  'block_ground.png',
+  'block_ice.png',
+  'block_music_note.png',
+  'block_pow.png',
+  'block_question.png',
+  'block_ramp.png',
+  'block_solid.png',
+  'block_star.png',
+];
+const marioModeCellHoverHandler = (event) => {
+  const image = images[Math.floor(Math.random() * images.length)];
+  event.target.style.backgroundImage = `url(./images/${image})`;
+};
+
+const toggleMarioMode = () => {
+  if (mode === 'normal') {
+    console.log('in toggleMarioMode');
+    mode = 'mario';
+    colorPalette = images;
+    onCellHoverHandler = marioModeCellHoverHandler;
+    colorInputContainer.style.display = 'none';
+    colorPaletteContainer.style.display = 'none';
+    marioModeToggleButton.innerHTML = 'Désactiver la mode Mario';
+  } else {
+    mode = 'normal';
+    colorPalette = [];
+    onCellHoverHandler = normalModeCellHoverHandler;
+    colorInputContainer.style.display = 'flex';
+    colorPaletteContainer.style.display = 'flex';
+    marioModeToggleButton.innerHTML = 'Activer la mode Mario';
+    updateColorPaletteSwatches();
+  }
+  updateGrid();
+};
+
+marioModeToggleButton.addEventListener('click', toggleMarioMode);

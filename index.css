@@ -142,6 +142,8 @@ section#controls #colorPaletteContainer #resetPaletteButton.visible {
 }
 #gridContainer .grid__cell {
   background-color: white;
+  background-size: cover;
+  background-position: center;
 }
 
 /*# sourceMappingURL=index.css.map */

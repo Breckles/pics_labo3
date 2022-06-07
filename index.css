@@ -131,6 +131,7 @@ section#controls #colorPaletteContainer #resetPaletteButton.visible {
   width: 100%;
   max-width: 600px;
   aspect-ratio: 1/1;
+  border: 1px solid black;
 }
 #gridContainer .grid {
   display: grid;

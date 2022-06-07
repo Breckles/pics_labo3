@@ -23,10 +23,11 @@
         <div class="formInput">
           <label for="size">Taille de la grille</label>
           <input type="range"
+                 id="gridSizeInput"
                  min=2
                  max=50
                  value="16"
-                 id="gridSizeInput" />
+                 autocomplete="off" />
         </div>
 
         <p id="gridSizeDisplay">16 x 16</p>
@@ -38,7 +39,8 @@
                class="formInput__label">Choisissez vos couleurs</label>
         <input type="color"
                id="colorInput"
-               value="#000000" />
+               value="#ffffff"
+               autocomplete="off" />
       </div>
 
       <div id="colorPaletteContainer">

@@ -68,7 +68,7 @@ section#controls {
   max-width: 800px;
 
   #gridSizeContainer {
-    @include flexColumn($centerY: flex-start);
+    @include flexColumn($centerY: flex-start, $gap: 10px);
   }
 
   #colorPaletteContainer {
@@ -84,10 +84,8 @@ section#controls {
     #colorPaletteSwatches {
       @include flexRow();
       flex-wrap: wrap;
-      position: absolute;
-      top: 0;
       width: 100%;
-      min-height: 20px;
+      min-height: 2.25em;
 
       .swatch {
         width: 20px;
@@ -114,7 +112,7 @@ section#controls {
 
     #colorPaletteContainer {
       align-items: center;
-      padding-bottom: 20px;
+      // padding-bottom: 20px;
       flex: 1;
 
       #colorPaletteSwatches {

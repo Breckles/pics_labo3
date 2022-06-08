@@ -124,13 +124,13 @@ section#controls #colorPaletteContainer #resetPaletteButton.visible {
   }
 }
 
-#gridContainer {
+section#gridContainer {
   width: 100%;
   max-width: 600px;
   aspect-ratio: 1/1;
   border: 1px solid black;
 }
-#gridContainer .grid {
+section#gridContainer .grid {
   display: grid;
   gap: 1px;
   border: 1px solid black;
@@ -138,7 +138,7 @@ section#controls #colorPaletteContainer #resetPaletteButton.visible {
   height: 100%;
   background-color: black;
 }
-#gridContainer .grid__cell {
+section#gridContainer .grid__cell {
   background-color: white;
   background-size: cover;
   background-position: center;
